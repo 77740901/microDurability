@@ -20,7 +20,8 @@ This project is licensed under **MPL-2.0**, except for the `microdurability-core
 
 | Module | License |
 |--------|---------|
-| All modules except `microdurability-core` | MPL-2.0 |
+| All modules except `microdurability-core` and `microdurability-dev-env-extras` | MPL-2.0 |
 | `microdurability-core` | CC-BY-NC-SA-4.0 |
+| `microdurability-dev-env-extras` | CC-BY-NC-SA-4.0 |
 
 Original authors: dzwdz & ReviversMC. This is an unofficial community port.
