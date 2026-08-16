@@ -1,0 +1,44 @@
+base {
+	archivesName = archivesName.get() + '-compat-1.20'
+}
+
+dependencies {
+	api project(path: ':microdurability-1.19.4', configuration: 'namedElements')
+
+	minecraft "com.mojang:minecraft:${project.minecraft_version_1_20}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings_1_20}:v2"
+
+	// Other mods
+	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_1_20}"
+	modRuntimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_1_20}") {
+		exclude(group: 'net.fabricmc.fabric-api')
+	}
+
+
+	if (project.use_third_party_mods == 'true') {
+		// Use full Fabric API bundle while debugging, since transitive deps aren't always declared correctly
+		modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_1_20}"
+
+		modRuntimeOnly "maven.modrinth:sodium:${project.sodium_version_1_20}"
+		modRuntimeOnly "maven.modrinth:lithium:${project.lithium_version_1_20}"
+		modRuntimeOnly "maven.modrinth:ferrite-core:${project.ferritecore_version_1_20}"
+		modRuntimeOnly "maven.modrinth:threadtweak:${project.threadtweak_version_1_20}"
+		modRuntimeOnly "maven.modrinth:fadeless:${project.fadeless_version_1_20}"
+
+		// Comment out the following dependencies to check vanilla compatibility
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.20.1-${project.raised_v1_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.20.1-${project.raised_v2_version}"
+		// modRuntimeOnly "maven.modrinth:raised:Fabric-1.20.1-${project.raised_v3_version}"
+		modRuntimeOnly "maven.modrinth:raised:Fabric-1.20.1-${project.raised_v4_version}"
+		modRuntimeOnly "maven.modrinth:double-hotbar:${project.double_hotbar_version_1_20}"
+	}
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 17
+}

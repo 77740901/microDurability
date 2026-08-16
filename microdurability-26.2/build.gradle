@@ -1,0 +1,40 @@
+base {
+	archivesName = archivesName.get() + '-compat-26.2'
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version_26_2}"
+	// 26.x has no obfuscation - no mappings line needed
+
+	// Fabric API (compileOnly needed for injected interfaces on ItemStack etc.)
+	compileOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_26_2}"
+
+	// Other mods
+	compileOnly "com.terraformersmc:modmenu:${project.modmenu_version_26_2}"
+	runtimeOnly "com.terraformersmc:modmenu:${project.modmenu_version_26_2}"
+	compileOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_26_2}") {
+		exclude(group: 'net.fabricmc.fabric-api')
+	}
+	runtimeOnly("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version_26_2}") {
+		exclude(group: 'net.fabricmc.fabric-api')
+	}
+
+
+	if (project.use_third_party_mods == 'true') {
+		// Use full Fabric API bundle while debugging, since transitive deps aren't always declared correctly
+		runtimeOnly "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version_26_2}"
+
+		// Optional debug mods - uncomment when 26.2 versions are available
+		//runtimeOnly "maven.modrinth:sodium:${project.sodium_version_26_2}"
+		//runtimeOnly "maven.modrinth:lithium:${project.lithium_version_26_2}"
+	}
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}

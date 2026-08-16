@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "microdurability",
+	"version": "${version}",
+	"name": "microDurability-unofficial",
+	"description": "A very minimal durability viewer - unofficial 26.2 port by 77740901",
+	"authors": [
+		"NebelNidas",
+		"dzwdz"
+	],
+	"contributors": [
+		"BlockBuilder57",
+		"77740901"
+	],
+	"contact": {
+		"homepage": "https://github.com/77740901/microDurability-26.2",
+		"sources": "https://github.com/77740901/microDurability-26.2",
+		"issues": "https://github.com/77740901/microDurability-26.2/issues"
+	},
+	"icon": "assets/microdurability/icon.png",
+	"license": "MPL-2.0",
+	"environment": "client",
+	"depends": {
+		"fabricloader": ">=0.12.9",
+		"minecraft": ">=1.16",
+		"cloth-config2": ">=4.9.5",
+		"microdurability-core": "*"
+	}
+}

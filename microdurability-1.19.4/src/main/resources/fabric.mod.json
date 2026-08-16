@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "microdurability-compat-1-19-4",
+	"version": "${version}",
+	"name": "microDurability 1.19.4 Compat",
+	"license": "MPL-2.0",
+	"environment": "client",
+	"entrypoints": {
+		"microdurability": [
+			"com.github.reviversmc.microdurability.MicroDurability1194"
+		],
+		"modmenu": [
+			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"microdurability1194.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.12.9",
+		"minecraft": ">=1.19.4",
+		"microdurability-compat-1-19": "*"
+	},
+	"custom": {
+		"modmenu": {
+			"badges": ["library"],
+			"parent": {
+				"id": "microdurability"
+			}
+		}
+	}
+}
