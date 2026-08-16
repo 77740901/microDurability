@@ -13,3 +13,14 @@
 ![Showcase image](./assets/preview-images/hotbar.png)
 
 **microDurability** is a minimal durability viewer that shows the durability bars of your armor right above the hotbar, without wasting any space. It can also warn you when your tools or armor are about to break.
+
+## License
+
+This project is licensed under **MPL-2.0**, except for the `microdurability-core` module which is licensed under **CC-BY-NC-SA-4.0**.
+
+| Module | License |
+|--------|---------|
+| All modules except `microdurability-core` | MPL-2.0 |
+| `microdurability-core` | CC-BY-NC-SA-4.0 |
+
+Original authors: dzwdz & ReviversMC. This is an unofficial community port.
