@@ -41,7 +41,7 @@ Or use **Mod Menu** → select `microDurability-unofficial 26.2 Compat` → clic
 
 ## Differences from the Original
 
-- **Creative mode armor bar positioning**: The armor durability bars are shifted down in creative mode to avoid overlapping with the status text.
+- **Creative mode armor bar positioning**: The armor durability bars are shifted down in creative mode to avoid overlapping with the HUD text.
 - **Tweakeroo FreeCamera compatibility**: When Tweakeroo's FreeCamera feature is enabled, all microDurability HUD elements (armor bars and durability warnings) are automatically hidden to prevent them from rendering while the camera is detached from the player. Supports Tweakeroo 0.29.0+.
 
 ## License
