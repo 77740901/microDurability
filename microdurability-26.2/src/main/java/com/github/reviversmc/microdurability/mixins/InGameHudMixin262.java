@@ -2,6 +2,7 @@ package com.github.reviversmc.microdurability.mixins;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -19,11 +20,26 @@ public class InGameHudMixin262 {
 
 	@Inject(method = "extractHotbarAndDecorations", at = @At("RETURN"))
 	private void renderArmorArea(GuiGraphicsExtractor context, DeltaTracker tickCounter, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderArmorArea(context, tickCount);
+		if (!isTweakerooFreeCameraActive()) {
+			MicroDurability.renderer.renderArmorArea(context, tickCount);
+		}
 	}
 
 	@Inject(method = "extractCrosshair", at = @At("RETURN"))
 	private void renderHeldItemExclamationMark(GuiGraphicsExtractor context, DeltaTracker tickCounter, CallbackInfo callbackInfo) {
-		MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, tickCount);
+		if (!isTweakerooFreeCameraActive()) {
+			MicroDurability.renderer.renderHeldItemLowDurabilityWarning(context, tickCount);
+		}
+	}
+
+	@Unique
+	private static boolean isTweakerooFreeCameraActive() {
+		try {
+			Class<?> featureToggle = Class.forName("fi.dy.masa.tweakeroo.config.FeatureToggle");
+			Object tweakFreeCamera = featureToggle.getField("TWEAK_FREE_CAMERA").get(null);
+			return (boolean) tweakFreeCamera.getClass().getMethod("getBooleanValue").invoke(tweakFreeCamera);
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }

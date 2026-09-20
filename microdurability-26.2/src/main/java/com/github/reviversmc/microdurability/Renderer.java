@@ -61,7 +61,7 @@ public abstract class Renderer {
 		boolean damageAbsoluteValueEnough = durability < MicroDurability.config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
 		boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < MicroDurability.config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
 
-		return damageAbsoluteValueEnough || damagePercentageEnough;
+		return damageAbsoluteValueEnough && damagePercentageEnough;
 	}
 
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick) {
@@ -101,11 +101,7 @@ public abstract class Renderer {
 		if (mc.player.experienceLevel > 0) y -= 6;
 		if (mc.gameMode.getPlayerMode() == GameType.CREATIVE) y += 13;
 
-		boolean renderedWarning = MicroDurability.config.lowDurabilityWarning.displayWarningForArmor
-				&& isTimeToShowWarning(tick)
-				&& renderArmorLowDurabilityWarning(context, x + 5, y - 12);
-
-		if (!renderedWarning && MicroDurability.config.armorBars.displayArmorBars) {
+		if (MicroDurability.config.armorBars.displayArmorBars) {
 			renderArmorBars(context, x, y);
 		}
 	}

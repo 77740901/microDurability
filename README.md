@@ -39,6 +39,11 @@ Config file: `.minecraft/config/microdurability.json5`
 
 Or use **Mod Menu** → select `microDurability-unofficial 26.2 Compat` → click the config button to adjust settings in-game.
 
+## Differences from the Original
+
+- **Creative mode armor bar positioning**: The armor durability bars are shifted down in creative mode to avoid overlapping with the status text.
+- **Tweakeroo FreeCamera compatibility**: When Tweakeroo's FreeCamera feature is enabled, all microDurability HUD elements (armor bars and durability warnings) are automatically hidden to prevent them from rendering while the camera is detached from the player. Supports Tweakeroo 0.29.0+.
+
 ## License
 
 This project is licensed under **MPL-2.0**, except for the following modules which are licensed under **CC-BY-NC-SA-4.0**:
