@@ -13,13 +13,18 @@
 		"77740901"
 	],
 	"contact": {
-		"homepage": "https://github.com/77740901/microDurability-26.2",
-		"sources": "https://github.com/77740901/microDurability-26.2",
-		"issues": "https://github.com/77740901/microDurability-26.2/issues"
+		"homepage": "https://github.com/77740901/microDurability",
+		"sources": "https://github.com/77740901/microDurability",
+		"issues": "https://github.com/77740901/microDurability/issues"
 	},
 	"icon": "assets/microdurability/icon.png",
 	"license": "MPL-2.0",
 	"environment": "client",
+	"entrypoints": {
+		"modmenu": [
+			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration262"
+		]
+	},
 	"depends": {
 		"fabricloader": ">=0.12.9",
 		"minecraft": ">=1.16",

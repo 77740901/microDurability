@@ -1,6 +1,7 @@
 package com.github.reviversmc.microdurability;
 
 import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.ItemStack;
@@ -8,6 +9,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 
 public class Renderer262 extends Renderer {
+	private static final int ICON_TEXTURE_SIZE = 256;
+
 	@Override
 	protected boolean hasMending(Object stackObj) {
 		ItemStack stack = (ItemStack) stackObj;
@@ -33,7 +36,13 @@ public class Renderer262 extends Renderer {
 
 	@Override
 	protected void drawWarningTexture(Object texture, Object context, int x, int y, int u, int v, int width, int height) {
-		((GuiGraphicsExtractor) context).blit((Identifier) texture, x, y, width, height, (float) u, (float) v, (float) width, (float) height);
+		((GuiGraphicsExtractor) context).blit(
+				RenderPipelines.GUI_TEXTURED,
+				(Identifier) texture,
+				x, y,
+				(float) u, (float) v,
+				width, height,
+				ICON_TEXTURE_SIZE, ICON_TEXTURE_SIZE);
 	}
 
 	@Override
@@ -47,7 +56,6 @@ public class Renderer262 extends Renderer {
 	@Override
 	protected void renderGuiQuad(Object context, int x, int y, int width, int height, int red, int green, int blue, int alpha) {
 		int color = (alpha << 24) | (red << 16) | (green << 8) | blue;
-		// GuiGraphicsExtractor.fill uses (x1, y1, x2, y2, color), not (x, y, width, height)
 		((GuiGraphicsExtractor) context).fill(x, y, x + width, y + height, color);
 	}
 }

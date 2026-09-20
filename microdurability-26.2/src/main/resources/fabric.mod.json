@@ -2,17 +2,24 @@
 	"schemaVersion": 1,
 	"id": "microdurability-compat-26-2",
 	"version": "${version}",
-	"name": "microDurability-unofficial 26.2 Compat",
-	"description": "26.2 compatibility layer for microDurability-unofficial",
+	"name": "microDurability-unofficial",
+	"description": "A very minimal durability viewer - unofficial 26.2 port by 77740901",
 	"icon": "assets/microdurability/icon.png",
+	"custom": {
+		"modmenu": {
+			"badges": [
+				"library"
+			],
+			"parent": {
+				"id": "microdurability"
+			}
+		}
+	},
 	"license": "MPL-2.0",
 	"environment": "client",
 	"entrypoints": {
 		"microdurability": [
 			"com.github.reviversmc.microdurability.MicroDurability262"
-		],
-		"modmenu": [
-			"com.github.reviversmc.microdurability.compat.mods.ModMenuIntegration262"
 		]
 	},
 	"mixins": [

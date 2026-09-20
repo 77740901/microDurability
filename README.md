@@ -1,13 +1,9 @@
-<img height="70" align="right" src="./assets/icon-transparent.png">
-
 # microDurability-unofficial
 
 > **Unofficial 26.2 Fabric Port** — Based on [ReviversMC/microDurability](https://github.com/ReviversMC/microDurability), ported to Minecraft 26.2 (Fabric). Original authors: dzwdz & ReviversMC.
 
 ![Environment: client](https://img.shields.io/badge/environment-client-1976d2?style=flat)
 ![License: MPL-2.0](https://img.shields.io/badge/license-MPL--2.0-blue)
-
-![Showcase image](./assets/preview-images/hotbar.png)
 
 ## What is this?
 

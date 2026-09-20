@@ -13,13 +13,5 @@
 	"depends": {
 		"fabricloader": ">=0.12.9",
 		"mm": ">=2.3"
-	},
-	"custom": {
-		"modmenu": {
-			"badges": ["library"],
-			"parent": {
-				"id": "microdurability"
-			}
-		}
 	}
 }

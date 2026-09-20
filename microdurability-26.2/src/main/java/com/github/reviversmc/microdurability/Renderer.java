@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
 
 import com.github.reviversmc.microdurability.compat.mods.DoubleHotbarCompat;
 import com.github.reviversmc.microdurability.compat.mods.RaisedCompat;
@@ -35,7 +36,7 @@ public abstract class Renderer {
 	}
 
 	private boolean isStatusAreaVisible() {
-		return mc.gameMode.hasExperience() && !mc.gui.hud.isHidden();
+		return mc.gameMode.getPlayerMode() != GameType.SPECTATOR && !mc.gui.hud.isHidden();
 	}
 
 	private boolean isTimeToShowWarning(int tick) {
@@ -60,7 +61,7 @@ public abstract class Renderer {
 		boolean damageAbsoluteValueEnough = durability < MicroDurability.config.lowDurabilityWarning.minDurabilityPointsBeforeWarning;
 		boolean damagePercentageEnough = (durability * 100f / stack.getMaxDamage()) < MicroDurability.config.lowDurabilityWarning.minDurabilityPercentageBeforeWarning;
 
-		return damageAbsoluteValueEnough && damagePercentageEnough;
+		return damageAbsoluteValueEnough || damagePercentageEnough;
 	}
 
 	public void renderHeldItemLowDurabilityWarning(Object context, int tick) {
@@ -98,6 +99,7 @@ public abstract class Renderer {
 		int x = scaledWidth / 2 - 7;
 		int y = scaledHeight - 30 + getDoubleHotbarOffset() - MicroDurability.config.armorBars.yOffset;
 		if (mc.player.experienceLevel > 0) y -= 6;
+		if (mc.gameMode.getPlayerMode() == GameType.CREATIVE) y += 13;
 
 		boolean renderedWarning = MicroDurability.config.lowDurabilityWarning.displayWarningForArmor
 				&& isTimeToShowWarning(tick)

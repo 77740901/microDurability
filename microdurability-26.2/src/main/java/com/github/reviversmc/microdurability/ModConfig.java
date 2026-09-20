@@ -33,14 +33,14 @@ public class ModConfig implements ConfigData {
 	public static class LowDurabilityWarning {
 		public boolean displayWarningForTools = true;
 		public boolean displayWarningForArmor = true;
-		public boolean onlyOnMendingItems = true;
+		public boolean onlyOnMendingItems = false;
 
-		@Comment("An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!")
+		@Comment("An item's durability has to be below either the minimum point value or the minimum percentage for the warning to show!")
 		@ConfigEntry.Gui.Tooltip
 		@ConfigEntry.BoundedDiscrete(min = 1, max = 250)
 		public int minDurabilityPointsBeforeWarning = 100;
 
-		@Comment("An item's durability has to be below both the minimum point value and the minimum percentage for the warning to show!")
+		@Comment("An item's durability has to be below either the minimum point value or the minimum percentage for the warning to show!")
 		@ConfigEntry.Gui.Tooltip
 		@ConfigEntry.BoundedDiscrete(min = 1, max = 99)
 		public int minDurabilityPercentageBeforeWarning = 10;

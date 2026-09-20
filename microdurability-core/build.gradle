@@ -24,3 +24,9 @@ java {
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 8
 }
+
+processResources {
+	from("${rootDir}/assets/icon.png") {
+		into 'assets/microdurability/'
+	}
+}
